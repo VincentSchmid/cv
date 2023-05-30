@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{fontspec} % custom fonts
-\usepackage{graphicx}
+\usepackage{graphicx} % images
 \usepackage{hyperref}
 \usepackage{titlesec}
 \usepackage{tikz} % language circles and dotted lines
@@ -55,6 +55,9 @@
     \end{tikzpicture}%
 }
 
+% Define a new command for skill logos
+\newcommand{\skilllogo}[1]{\includegraphics[width=0.9\linewidth]{assets/logos/#1.png}}
+
 % Define Spacing of Lists
 \setlist[itemize]{itemsep=-1ex, topsep=-1ex, partopsep=1ex, parsep=2ex}
 
@@ -71,7 +74,7 @@
 \hfill
 \begin{minipage}[t]{0.3\textwidth}
     \vspace{0pt}
-    \includegraphics[width=\textwidth]{assets/images/portrait.jpg}
+    \hfill\includegraphics[width=0.4\textwidth]{assets/images/portrait.jpg}
 
     \input{languages}
 
