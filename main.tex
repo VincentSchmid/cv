@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{fontspec} % custom fonts
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor} % define colors
+\usepackage{setspace}
+\usepackage{tikz} % for dotted lines
+\usepackage{enumitem} % spacing for list items
+\usepackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+
+% Define Fonts
+\setmainfont[
+    Path = assets/fonts/Roboto/,  % adjust this path to match your setup
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic,
+]{Roboto}
+\newfontfamily\sectionfont[Path=assets/fonts/]{Panton-BlackCaps.otf}
+\newfontfamily\subsectionfont[Path=assets/fonts/]{Acumin-BdPro.otf}
+
+% Define Colors
+\definecolor{altColor}{RGB}{0,157,255}
+\definecolor{lightgray}{gray}{0.8}
+
+% Redefine the section formats
+\titleformat{\section}
+{\Large\sectionfont}
+{}
+{0pt}
+{}
+[{\titlerule[1.2pt]}] % Add a line after the section title
+
+% Redefine the subsection format to use \subsectionfont
+\titleformat{\subsection}
+  {\subsectionfont\fontsize{12}{10}\selectfont\bfseries} % Modify the font settings here
+  {} % Label format
+  {0pt} % Label separation
+  {} % Before code
+  [] % After code
+
+% Define the altSection command
+\newcommand{\altSection}[1]{%
+  {\large\sectionfont\color{altColor} #1\par}%
+}
+
+% Define the dotted line command
+\newcommand{\dottedline}{%
+    \begin{tikzpicture}
+        \draw[dotted, thick, lightgray] (0,0) -- (\textwidth,0);
+    \end{tikzpicture}%
+}
+
+% Define Spacing of Lists
+\setlist[itemize]{itemsep=-1ex, topsep=-1ex, partopsep=1ex, parsep=2ex}
+
+\begin{document}
+\setstretch{0.8}
+\begin{minipage}[t]{0.65\textwidth}
+    \vspace{0pt}
+    \input{information}
+
+    \input{education}
+
+    \input{experience}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+    \vspace{0pt}
+    \includegraphics[width=\textwidth]{assets/images/portrait.jpg}
+
+    \input{languages}
+
+    \input{skills}
+
+    \input{certificates}
+\end{minipage}
+
+\end{document}
