@@ -1,6 +1,30 @@
+% Define commands for filled and empty circles
+\newcommand{\skilllevel}[1]{
+  \raisebox{-0.7ex}{
+    \begin{tikzpicture}
+    \foreach \i in {1,...,5} {
+      \filldraw[draw=darkgray, fill=darkgray] (\i*0.4cm,0) circle (0.15cm);
+    }
+    \foreach \i in {1,...,#1} {
+      \filldraw[draw=altColor, fill=altColor] (\i*0.4cm,0) circle (0.15cm);
+    }
+    \end{tikzpicture}
+  }
+}
+
+% Define a command to enter a new language and proficiency
+\newcommand{\languageentry}[3]{
+  \textbf{#1} & \hfill \skilllevel{#2} \\
+  \small{#3} &  \\[0.2em]
+  \multicolumn{2}{l}{\hspace{-2mm}\dottedline} \\
+  \vspace{0.2em} \\
+}
+
 \section{Languages}
-\begin{description}
-    \item[German] Native
-    \item[English] Proficient
-    \item[French] Intermediate
-\end{description}
+\vspace{0.2em} % Adjust this value as needed
+\begin{tabular}{@{}p{0.3\textwidth}p{0.5\textwidth}@{}}
+    \languageentry{German}{5}{Native}
+    \languageentry{English}{4}{Proficient}
+    \languageentry{French}{2}{Intermediate}
+\end{tabular}
+\vspace{-1.2em}
