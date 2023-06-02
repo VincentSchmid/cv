@@ -6,3 +6,5 @@
 *.synctex.gz
 *.synctex*
 *.pdf
+assets/converted/**
+assets/to_convert/**

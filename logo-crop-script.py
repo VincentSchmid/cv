@@ -50,7 +50,7 @@ def main(folder_path, output_folder, new_size):
 
 
 if __name__ == "__main__":
-    folder_path = "."  # path of the folder containing images
-    output_folder = "crop"  # output folder for the images
+    folder_path = "assets/to_convert"  # path of the folder containing images
+    output_folder = "assets/converted"  # output folder for the images
     size = 1200  # new size of images
     main(folder_path, output_folder, size)
