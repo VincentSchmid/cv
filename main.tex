@@ -10,7 +10,7 @@
 \usepackage{fontawesome} % Icons
 \usepackage{tabularx}
 \usepackage{etoolbox}
-\usepackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}
 
 % Define Fonts
 \setmainfont[
@@ -57,7 +57,14 @@
 }
 
 % Define a new command for skill logos
-\newcommand{\skilllogo}[1]{\includegraphics[width=0.9\linewidth]{assets/logos/#1.png}}
+\newcommand{\skilllogo}[1]{
+  \begin{minipage}[c]{0.9\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/logos/#1.png}
+    \vspace{0.5em} % Adjust the size of the space to your liking
+    \\ \textcolor{lightgray}{#1}
+  \end{minipage}
+}
 
 % Define Spacing of Lists
 \setlist[itemize]{itemsep=-1ex, topsep=-1ex, partopsep=1ex, parsep=2ex}
@@ -82,8 +89,9 @@
 }
 
 \begin{document}
+\pagestyle{empty} % No headers or footers
 \small
-\setstretch{0.8}
+\setstretch{0.6}
 \noindent
 \input{information}
 \begin{minipage}[t]{0.65\textwidth}
