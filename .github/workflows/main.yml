@@ -11,16 +11,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Git LFS pull
+        run: git lfs pull
       - name: Build LaTeX
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
           latexmk_use_xelatex: true
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
-          extra_fonts: |
-            ./assets/fonts/Roboto/Roboto-*.ttf
-            ./assets/fonts/Panton-BlackCaps.otf
-            ./assets/fonts/Acumin-BdPro.otf
           post_compile: >
             gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf main.pdf
       - name: Create release and upload PDF
