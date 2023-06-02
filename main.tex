@@ -57,12 +57,12 @@
 }
 
 % Define a new command for skill logos
-\newcommand{\skilllogo}[1]{
+\newcommand{\skilllogo}[2]{
   \begin{minipage}[c]{0.9\linewidth}
     \centering
     \includegraphics[width=0.9\linewidth]{assets/logos/#1.png}
     \vspace{0.5em} % Adjust the size of the space to your liking
-    \\ \textcolor{lightgray}{#1}
+    \\ \textcolor{lightgray}{#2}
   \end{minipage}
 }
 
@@ -105,7 +105,9 @@
 \begin{minipage}[t]{0.3\textwidth}
     \vspace{0pt}
 
-    \input{skills}
+    \input{programming-languages}
+
+    \input{technologies}
 
     \input{certificates}
 
