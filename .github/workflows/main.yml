@@ -17,6 +17,10 @@ jobs:
           root_file: main.tex
           compiler: xelatex
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
+          extra_fonts: |
+            ./assets/fonts/Roboto/Roboto-*.ttf
+            ./assets/fonts/Panton-BlackCaps.otf
+            ./assets/fonts/Acumin-BdPro.otf
           post_compile: >
             gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf main.pdf
       - name: Create release and upload PDF
