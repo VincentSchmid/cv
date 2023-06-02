@@ -15,7 +15,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
-          compiler: xelatex
+          latexmk_use_xelatex: true
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
           extra_fonts: |
             ./assets/fonts/Roboto/Roboto-*.ttf
