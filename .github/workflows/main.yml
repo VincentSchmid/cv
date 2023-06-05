@@ -21,14 +21,17 @@ jobs:
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
           post_compile: >
             gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf main.pdf
+      - name: Get date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: release-${{ github.sha }}
-          release_name: Release ${{ github.sha }}
+          tag_name: release-${{ steps.date.outputs.date }}
+          release_name: Release ${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
