@@ -57,12 +57,13 @@
 
 % Define the dotted line command
 \newcommand{\dottedline}{%
-  \vspace{0.5em}
+  \vspace{1em}
   \begin{tikzpicture}
       \draw[dotted, thick, lightgray] (0,0) -- (\textwidth,0);
   \end{tikzpicture}
+  \par
+  \vspace{1em}
 }
-
 
 % Define a new command for skill logos
 \newcommand{\skilllogo}[2]{
@@ -77,16 +78,21 @@
 % Define Spacing of Lists
 \setlist[itemize]{itemsep=-1ex, topsep=-1ex, partopsep=1ex, parsep=2ex}
 
+\newcommand{\mysubsection}[1]{
+    \vspace{1em}
+    {\subsectionfont\fontsize{12}{10}\selectfont\bfseries\color{black} #1\par}
+    \vspace{-0.8em} % You can adjust this to match your desired space
+}
+
 % Define a new command for sections with details
-\newcommand{\detailsection}[8]{
-    \subsection{#1}
-    \vspace{-0.4em}
-    \altSection{#2}
-    \begin{tabularx}{\textwidth}{@{}XXX@{}}
-        {\color{black} \ifblank{#3}{}{#3\: #4}} &
-        {\color{black} \ifblank{#5}{}{#5\: #6}} &
-        {\color{black} \ifblank{#7}{}{#7\: #8}}
-    \end{tabularx}
+\newcommand{\detailsection}[4]{
+    \altSection{#1}
+    \par
+    \vspace{-0.2em}
+    \mysubsection{\href{#3}{#2}}
+    \par
+    \vspace*{1.5em}
+    {\color{black} #4}
     \vspace{0.3em}
 }
 
@@ -104,19 +110,14 @@
 \noindent
 \input{information}
 \begin{minipage}[t]{0.7\textwidth}
-    \vspace{0pt}
 
     \input{experience}
-
-    \input{projects}
 
     \input{education}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.25\textwidth}
     \vspace{0pt}
-
-    \input{programming-languages}
 
     \input{technologies}
 
