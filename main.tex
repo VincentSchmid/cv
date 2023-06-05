@@ -47,7 +47,7 @@
 
 % Define the altSection command
 \newcommand{\altSection}[1]{%
-  {\large\sectionfont\color{altColor} #1\par}%
+  {\large\sectionfont\color{altColor} #1\par}
 }
 
 \AtBeginDocument{\color{textgray}}
@@ -79,7 +79,6 @@
 \setlist[itemize]{itemsep=-1ex, topsep=-1ex, partopsep=1ex, parsep=2ex}
 
 \newcommand{\mysubsection}[1]{
-    \vspace{1em}
     {\subsectionfont\fontsize{12}{10}\selectfont\bfseries\color{black} #1\par}
     \vspace{-0.8em} % You can adjust this to match your desired space
 }
@@ -88,7 +87,7 @@
 \newcommand{\detailsection}[4]{
     \altSection{#1}
     \par
-    \vspace{-0.2em}
+    \vspace*{0.5em}
     \mysubsection{\href{#3}{#2}}
     \par
     \vspace*{1.5em}
