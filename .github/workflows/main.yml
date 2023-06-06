@@ -51,9 +51,15 @@ jobs:
           release_name: Release ${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
-      - name: Download artifacts
+      - name: Download English artifact
         uses: actions/download-artifact@v2
         with:
+          name: vincent_cv_english
+          path: .
+      - name: Download German artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: vincent_cv_german
           path: .
       - name: Upload Release Asset
         uses: skx/github-action-publish-binaries@release-2.0
