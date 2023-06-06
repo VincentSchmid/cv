@@ -5,7 +5,11 @@
         Vincent Schmid\\[0.2em]
     }
     {\sectionfont\fontsize{13}{14}\selectfont\color{altColor}
-        Software Engineer\\[0.6em]
+        \ifthenelse{\equal{\mylanguage}{german}}{
+            Software-Ingenieur
+        }{
+            Software Engineer
+        }\\[0.6em]
     }
     \begin{minipage}[t]{0.58\linewidth}
         \begin{description}[labelwidth=1em]
@@ -18,7 +22,12 @@
     \begin{minipage}[t]{0.38\linewidth}
         \begin{description}[labelwidth=1em]
             \item[\faLinkedin\color{altColor}] \href{https://www.linkedin.com/in/vincent-schmid-b931787a/}{linkedin.com}
-            \item[\faMapMarker\color{altColor}] Zürich, Switzerland
+            \ifthenelse{\equal{\mylanguage}{german}}{
+                \item[\faMapMarker\color{altColor}] Zürich
+            }{
+                \item[\faMapMarker\color{altColor}] Zurich, Switzerland
+            }
+
         \end{description}
     \end{minipage}
 \end{minipage}

@@ -7,12 +7,17 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        language: ['english', 'german']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Git LFS pull
         run: git lfs pull
+      - name: Set Language
+        run: echo "\def\mylanguage{${{ matrix.language }}" > selected_language.tex
       - name: Build LaTeX
         uses: xu-cheng/latex-action@v2
         with:
@@ -20,7 +25,17 @@ jobs:
           latexmk_use_xelatex: true
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
           post_compile: >
-            gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf main.pdf
+            gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv_${{ matrix.language }}.pdf main.pdf
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: vincent_cv_${{ matrix.language }}
+          path: vincent_cv_${{ matrix.language }}.pdf
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Get date
         id: date
         run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
@@ -34,10 +49,14 @@ jobs:
           release_name: Release ${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: .
       - name: Upload Release Asset
         uses: skx/github-action-publish-binaries@release-2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           releaseId: ${{ steps.create_release.outputs.id }}
-          args: 'vincent_cv.pdf'
+          args: '*.pdf'

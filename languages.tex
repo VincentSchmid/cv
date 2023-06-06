@@ -2,12 +2,12 @@
 \newcommand{\skilllevel}[1]{
   \raisebox{-1.2ex}{
     \begin{tikzpicture}
-    \foreach \i in {1,...,5} {
-      \filldraw[draw=darkgray, fill=darkgray] (\i*0.4cm,0) circle (0.15cm);
-    }
-    \foreach \i in {1,...,#1} {
-      \filldraw[draw=altColor, fill=altColor] (\i*0.4cm,0) circle (0.15cm);
-    }
+      \foreach \i in {1,...,5} {
+          \filldraw[draw=darkgray, fill=darkgray] (\i*0.4cm,0) circle (0.15cm);
+        }
+      \foreach \i in {1,...,#1} {
+          \filldraw[draw=altColor, fill=altColor] (\i*0.4cm,0) circle (0.15cm);
+        }
     \end{tikzpicture}
   }
 }
@@ -19,11 +19,21 @@
   \multicolumn{2}{l}{\hspace{-2.5mm}\dottedline} \\[0em]
 }
 
-\section{Speaking}
+\ifthenelse{\equal{\mylanguage}{german}}{
+  \section{Sprachen}
+}{
+  \section{Languages}
+}
 \vspace{0.8em} % Adjust this value as needed
 \begin{tabular}{@{}p{0.3\textwidth}p{0.5\textwidth}@{}}
+  \ifthenelse{\equal{\mylanguage}{german}}{
+    \languageentry{Deutsch}{5}{Muttersprache}
+    \languageentry{Englisch}{4}{Fließend}
+    \languageentry{Französisch}{3}{Mittelstufe}
+  }{
     \languageentry{German}{5}{Native}
     \languageentry{English}{4}{Proficient}
     \languageentry{French}{3}{Intermediate}
+  }
 \end{tabular}
 \vspace{-1.2em}
