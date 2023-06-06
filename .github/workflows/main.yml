@@ -17,7 +17,7 @@ jobs:
       - name: Git LFS pull
         run: git lfs pull
       - name: Set Language
-        run: echo "\def\mylanguage{${{ matrix.language }}" > selected_language.tex
+        run: echo "\def\mylanguage{${{ matrix.language }}}" > selected_language.tex
       - name: Build LaTeX
         uses: xu-cheng/latex-action@v2
         with:
