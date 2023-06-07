@@ -8,3 +8,5 @@
 *.pdf
 assets/converted/**
 assets/to_convert/**
+selected_language.tex
+.vscode/
