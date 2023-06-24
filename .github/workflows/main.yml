@@ -28,11 +28,14 @@ jobs:
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
           post_compile: >
             gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv_${{ matrix.language }}.pdf main.pdf
-      - name: Upload artifacts
+      - name: Upload artifacts to release
         uses: actions/upload-artifact@v2
         with:
           name: vincent_cv_${{ matrix.language }}
           path: vincent_cv_${{ matrix.language }}.pdf
+      - name: Upload artifacts to file Server
+        run: |
+          curl -X POST -H "X-API-Key: ${{ secrets.FILE_SERVER_API_KEY }}" -F "file=@vincent_cv_${{ matrix.language }}.pdf" ${{ secrets.FILE_SERVER_URL }}
 
   release:
     needs: build
