@@ -28,11 +28,14 @@ jobs:
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
           post_compile: >
             gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv_${{ matrix.language }}.pdf main.pdf
-      - name: Upload artifacts
+      - name: Upload artifacts for release
         uses: actions/upload-artifact@v2
         with:
           name: vincent_cv_${{ matrix.language }}
           path: vincent_cv_${{ matrix.language }}.pdf
+      - name: Upload artifacts to fileserver
+        run: |
+          curl -X POST -H "X-API-Key: ${{ secrets.FILE_SERVER_API_KEY }}" -F "file=@vincent_cv_${{ matrix.language }}.pdf" ${{ secrets.FILE_SERVER_URL }}
 
   release:
     needs: build
@@ -68,3 +71,9 @@ jobs:
         with:
           releaseId: ${{ steps.create_release.outputs.id }}
           args: '*.pdf'
+      - name: Delete Older Releases
+        uses: dev-drprasad/delete-older-releases@v0.2.1
+        with:
+          keep_latest: 5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
