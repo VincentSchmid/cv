@@ -1,6 +1,10 @@
 LaTeX-Based CV
 ============================
 
+<div align="center">
+  <img src="assets/images/cv-preview.png" alt="CV Preview">
+</div>
+
 Prerequisites
 -------------
 
@@ -10,8 +14,6 @@ To successfully compile and build this CV project, please ensure the following p
 
 Install Git Large File Storage (LFS) to properly download the included icons, fonts, and images:
 
-bash
-
 ```bash
 git lfs install
 ```
@@ -20,8 +22,6 @@ git lfs install
 
 Ensure that the LaTeX tools are installed. For macOS, execute the following command:
 
-bash
-
 ```bash
 brew install texlive
 ```
@@ -29,8 +29,6 @@ brew install texlive
 ### Ghostscript for PDF Compression
 
 To enable PDF compression, Ghostscript (gs) needs to be installed:
-
-bash
 
 ```bash
 brew install ghostscript
@@ -42,17 +40,15 @@ For optional icon support (e.g., GitHub, LinkedIn), install the FontAwesome font
 
 If you encounter font-related issues, consider installing the fonts systemwide. I had issues with this font: `Acumin-BdPro.otf`.
 
-Adding Custom Icons
--------------------
+Adding New Logos
+----------------
 
-Icons should be placed in the `assets/logso` folder.
+Icons should be placed in the `assets/logos` folder.
 I've developed a Python script for automated icon image adjustment. The script crops and resizes icon images into square shapes. PNG files without a background are recommended for optimal results.
 
 ### Pillow Library
 
 The script utilizes the Pillow image processing library. Install it via pip:
-
-bash
 
 ```bash
 pip install Pillow
@@ -62,10 +58,8 @@ pip install Pillow
 
 Execute the script as follows:
 
-bash
-
 ```bash
-python script.py --input_folder assets/to_convert --output_folder assets/converted --size 1200
+python scripts/logo-crop-script.py --input_folder assets/to_convert --output_folder assets/converted --size 1200
 ```
 
 This will process all images in the `input_folder` and output them to `output_folder` at the specified size (px). The resulting images can then be seamlessly integrated into the document.
@@ -77,8 +71,6 @@ PDF Compilation
 
 Compile the LaTeX document into a PDF using the following command:
 
-bash
-
 ```bash
 latexmk -synctex=1 -interaction=nonstopmode -file-line-error -xelatex main.tex
 ```
@@ -86,8 +78,6 @@ latexmk -synctex=1 -interaction=nonstopmode -file-line-error -xelatex main.tex
 ### Compressing the PDF
 
 To reduce the PDF file size to a more manageable level, use:
-
-bash
 
 ```bash
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf main.pdf
@@ -101,8 +91,6 @@ To Build the PDF in english, change the selected language in `src/selected_langu
 
 All aforementioned commands can be executed via the `Makefile`.  
 For example Simply run:
-
-bash
 
 ```bash
 make pdf
