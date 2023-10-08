@@ -1,10 +1,4 @@
-*.aux
-*.fdb_latexmk
-*.fls
-*.log
-*.out
-*.synctex.gz
-*.synctex*
+build/**
 *.pdf
 assets/converted/**
 assets/to_convert/**

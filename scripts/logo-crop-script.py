@@ -1,4 +1,5 @@
 import os
+import argparse
 from PIL import Image
 
 
@@ -20,7 +21,7 @@ def resize_and_pad(img, size):
     elif aspect < 1:  # Height > width
         new_width = round(size * aspect)
 
-    img = img.resize((new_width, new_height), Image.ANTIALIAS)
+    img = img.resize((new_width, new_height), Image.LANCZOS)
 
     new_img = Image.new(
         "RGBA", (size, size), (0, 0, 0, 0)
@@ -50,7 +51,9 @@ def main(folder_path, output_folder, new_size):
 
 
 if __name__ == "__main__":
-    folder_path = "assets/to_convert"  # path of the folder containing images
-    output_folder = "assets/converted"  # output folder for the images
-    size = 1200  # new size of images
-    main(folder_path, output_folder, size)
+    parser = argparse.ArgumentParser(description='Process images.')
+    parser.add_argument('--input_folder', type=str, default="assets/to_convert", help='Path of the folder containing images.')
+    parser.add_argument('--output_folder', type=str, default="assets/converted", help='Output folder for the images.')
+    parser.add_argument('--size', type=int, default=1200, help='New size of images.')
+    args = parser.parse_args()
+    main(args.input_folder, args.output_folder, args.size)
