@@ -1,0 +1,25 @@
+% Redefine the section formats
+\titleformat{\section}
+{\Large\sectionfont\color{black}}
+{}
+{0pt}
+{}
+[{\vspace{0.2em}\titlerule[0.8pt]}] % Add a line after the section title
+
+% Redefine the subsection format to use \subsectionfont
+\titleformat{\subsection}
+  {\subsectionfont\fontsize{12}{10}\selectfont\bfseries\color{black}}
+  {}
+  {0pt}
+  {}
+  []
+
+% Define Spacing of Lists
+\setlist[itemize]{itemsep=-1ex, topsep=-1ex, partopsep=1ex, parsep=2ex}
+
+\hypersetup{
+  colorlinks = true, %Colors links instead of ugly boxes
+  urlcolor = blue, %Color for external hyperlinks
+  linkcolor = blue, %Color of internal links
+  citecolor = blue, %Color of citations
+}
