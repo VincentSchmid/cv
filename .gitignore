@@ -3,3 +3,7 @@ build/**
 assets/converted/**
 assets/to_convert/**
 .vscode/
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
