@@ -46,7 +46,7 @@ Adding New Logos
 ----------------
 
 Icons should be placed in the `assets/logos` folder.
-I've developed a Python script for automated icon image adjustment. The script crops and resizes icon images into square shapes. PNG files without a background are recommended for optimal results.
+The repository contains a Python script for automated logo image adjustment. The script crops and resizes logo images into square shapes. PNG files without a background are recommended for optimal results.
 
 ### Pillow Library
 
@@ -64,17 +64,17 @@ Execute the script as follows:
 python scripts/logo-crop-script.py --input_folder assets/to_convert --output_folder assets/converted --size 1200
 ```
 
-This will process all images in the `input_folder` and output them to `output_folder` at the specified size (px). The resulting images can then be seamlessly integrated into the document.
+This will process all images in the `input_folder` to `output_folder` at the specified size (px). The resulting images can then be seamlessly integrated into the document and will align niceley.
 
 PDF Compilation
 ---------------
 
 ### Building the PDF
 
-Compile the LaTeX document into a PDF using the following command:
+Compile the LaTeX code into a PDF using the following command:
 
 ```bash
-latexmk -synctex=1 -interaction=nonstopmode -file-line-error -xelatex main.tex
+latexmk -synctex=1 -interaction=nonstopmode -file-line-error -xelatex -outdir=build src/main.tex
 ```
 
 ### Compressing the PDF
@@ -82,16 +82,16 @@ latexmk -synctex=1 -interaction=nonstopmode -file-line-error -xelatex main.tex
 To reduce the PDF file size to a more manageable level, use:
 
 ```bash
-gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf main.pdf
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf build/main.pdf
 ```
 
 ### Language
 
-To Build the PDF in english, change the selected language in `src/selected_language.tex` to english / german.
+To Build the PDF in a different language, change the selected language in `src/selected_language.tex` to english or german.
 
 ### Makefile for Automation
 
-All aforementioned commands can be executed via the `Makefile`.  
+All previously mentioned commands can be executed via the `Makefile`.  
 For example Simply run:
 
 ```bash
@@ -103,5 +103,5 @@ to generate a compressed PDF of your CV.
 Github Actions
 --------------
 
-This repository will automatically build the pdfs in english and german and create a release, it will keep the 5 most current releases.
+This repository will automatically build the pdfs in english and german and create a release, it will keep the 5 most recent releases.
 It will also upload the pdfs to a server to host the cvs online as a direct download.
