@@ -1,0 +1,32 @@
+\AtBeginDocument{\color{textgray}}
+
+\begin{document}
+\pagestyle{empty} % No headers or footers
+\small
+\setstretch{0.6}
+\noindent
+\input{src/sections/information}
+\begin{minipage}[t]{0.7\textwidth}
+  \ifthenelse{\equal{\mylanguage}{german}}{
+    \begin{german}
+      \input{src/sections/experience_de}
+      \input{src/sections/education_de}
+    \end{german}
+  }
+  {
+    \input{src/sections/experience_en}
+    \input{src/sections/education_en}
+  }
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.25\textwidth}
+    \vspace{0pt}
+
+    \input{src/sections/technologies}
+
+    \input{src/sections/certificates}
+
+    \input{src/sections/languages}
+\end{minipage}
+
+\end{document}
