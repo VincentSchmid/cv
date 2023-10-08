@@ -18,12 +18,12 @@ jobs:
         run: git lfs pull
       - name: Set Language
         run: |
-          echo "\def\mylanguage{${{ matrix.language }}}" > selected_language.tex
-          echo "" >> selected_language.tex
+          echo "\def\mylanguage{${{ matrix.language }}}" > src/selected_language.tex
+          echo "" >> src/selected_language.tex
       - name: Build LaTeX
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: src/main.tex
           latexmk_use_xelatex: true
           args: "-synctex=1 -interaction=nonstopmode -file-line-error"
           post_compile: >

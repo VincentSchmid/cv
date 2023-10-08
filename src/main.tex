@@ -16,7 +16,7 @@
 \setotherlanguage{german} % The other language(s)
 \usepackage[a4paper,left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}
 
-\input{selected_language.tex}
+\input{src/selected_language.tex}
 
 % Define Fonts
 \setmainfont[
@@ -45,11 +45,11 @@
 
 % Redefine the subsection format to use \subsectionfont
 \titleformat{\subsection}
-  {\subsectionfont\fontsize{12}{10}\selectfont\bfseries\color{black}} % Modify the font settings here
-  {} % Label format
-  {0pt} % Label separation
-  {} % Before code
-  [] % After code
+  {\subsectionfont\fontsize{12}{10}\selectfont\bfseries\color{black}}
+  {}
+  {0pt}
+  {}
+  []
 
 % Define the altSection command
 \newcommand{\altSection}[1]{%
@@ -113,28 +113,28 @@
 \small
 \setstretch{0.6}
 \noindent
-\input{information}
+\input{src/sections/information}
 \begin{minipage}[t]{0.7\textwidth}
   \ifthenelse{\equal{\mylanguage}{german}}{
     \begin{german}
-      \input{experience_de}
-      \input{education_de}
+      \input{src/sections/experience_de}
+      \input{src/sections/education_de}
     \end{german}
   }
   {
-    \input{experience_en}
-    \input{education_en}
+    \input{src/sections/experience_en}
+    \input{src/sections/education_en}
   }
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.25\textwidth}
     \vspace{0pt}
 
-    \input{technologies}
+    \input{src/sections/technologies}
 
-    \input{certificates}
+    \input{src/sections/certificates}
 
-    \input{languages}
+    \input{src/sections/languages}
 \end{minipage}
 
 \end{document}
