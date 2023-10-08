@@ -93,6 +93,10 @@ bash
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf main.pdf
 ```
 
+### Language
+
+To Build the PDF in english, change the selected language in `src/selected_language.tex` to english / german.
+
 ### Makefile for Automation
 
 All aforementioned commands can be executed via the `Makefile`.  
@@ -105,3 +109,9 @@ make pdf
 ```
 
 to generate a compressed PDF of your CV.
+
+Github Actions
+--------------
+
+This repository will automatically build the pdfs in english and german and create a release, it will keep the 5 most current releases.
+It will also upload the pdfs to a server to host the cvs online as a direct download.
