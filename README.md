@@ -1,7 +1,7 @@
 LaTeX-Based CV
 ============================
 
-Keeping a CV updated in multiple languages and tweaking it to match a job posting can be annoying. From manual text box adjustments to scattered versions, maintaining consistency becomes challenging and error prone. This repository addresses these pain points by leveraging the power and flexibility of LaTeX. The setup allows for a fast and reliable way to update texts in multiple lanugages. Now the latest cv can allways be generated from code. No more manual adjustments or juggling between different versions - simply update the text in your favorite text editor and build the CV with a single command. This repository also uses a github action to create a new release pdf for each langugage on change in the main branch.
+Keeping a CV updated in multiple languages and tweaking it to match a job posting can be annoying. The latest cv can allways be generated from code and changes are tracked by source control. No more juggling between different versions. Rearranging and adding sections is easy. This repository also uses a github action to create a new release pdf for each langugage on each change in the main branch.
 
 <div align="center">
   <img src="assets/images/cv-preview.png" alt="CV Preview">
