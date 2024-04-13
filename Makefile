@@ -5,7 +5,7 @@ english:
 	echo "\def\mylanguage{english}" > src/selected_language.tex
 
 build-tex:
-	latexmk -synctex=1 -interaction=nonstopmode -file-line-error -xelatex -outdir=build src/main.tex
+	latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdfxe -outdir=build src/main.tex
 
 compress:
 	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=vincent_cv.pdf build/main.pdf
